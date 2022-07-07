@@ -19,11 +19,12 @@ function creatingGallery(galleryItems) {
 };
 
 galleryEl.insertAdjacentHTML('beforeend', creatingGallery(galleryItems));
+
 galleryEl.addEventListener('click', onGalleryContainerClick);
 
 function onGalleryContainerClick(event) {
     event.preventDefault();
-    
+
     const imgEl = event.target.classList.contains('gallery__image');
 
     if (!imgEl) {
@@ -35,7 +36,8 @@ function onGalleryContainerClick(event) {
     const instance = basicLightbox.create(`<img src = "${urlEl}">`);
     instance.show(() => window.addEventListener('keydown', onEscPress));
     
-function onEscPress(event) {
+    function onEscPress(event) {
+    
     if (event.key === 'Escape') {
         instance.close(() => window.removeEventListener('keydown', onEscPress));
         return;
