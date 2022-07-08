@@ -13,3 +13,9 @@ function creatingGallery(galleryItems) {
 
 galleryEl.insertAdjacentHTML('beforeend', creatingGallery(galleryItems));
 
+const lightboxGallery = new SimpleLightbox('.gallery__item', {
+    captionSelector: 'img',
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250
+});
