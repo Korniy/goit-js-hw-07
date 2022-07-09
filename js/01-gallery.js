@@ -34,16 +34,22 @@ function onGalleryContainerClick(event) {
 
     const urlEl = event.target.dataset.source;
 
-    const instance = basicLightbox.create(`<img src = "${urlEl}">`);
-    instance.show(() => window.addEventListener('keydown', onEscPress));
+  const instance = basicLightbox.create(`<img src = "${urlEl}">`, {
+    onShow: () => { window.addEventListener('keydown', onEscPress) },
+    onClose: () => { window.removeEventListener('keydown', onEscPress) }
+  });
+  
+  instance.show();
+    // instance.show(() => window.addEventListener('keydown', onEscPress));
     
     function onEscPress(event) {
     
     if (event.key === 'Escape') {
-        instance.close(() => window.removeEventListener('keydown', onEscPress));
-        return;
-    }
-    return;
+        // instance.close(() => window.removeEventListener('keydown', onEscPress));
+      instance.close();
+        // return;
+      };
+    // return;
 };
 
 };
